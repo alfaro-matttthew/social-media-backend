@@ -1,16 +1,33 @@
-const router = require('express').Router();
-const {} = require('../../controllers/user-controller');
-const { User } = require("../../models");
+const router = require("express").Router();
+const {
+  getAllThoughts,
+  getThoughtById,
+  createThought,
+  updateThought,
+  deleteThought,
+  addReaction,
+  deleteReaction
+} = require("../../controllers/thought-controller");
 
+//  find all
+router.get("/all", getAllThoughts);
 
-router.get('/all-items', async (req, res) => {
-    try {
-      // Using model in route to find all documents that are instances of that model
-      const result = await User.find({});
-      res.status(200).json(result);
-    } catch (err) {
-      res.status(500).send({ message: 'Internal Server Error' })
-    }
-  });
+//    find by id
+router.get("/:id", getThoughtById);
+
+//   create
+router.post("/", createThought);
+
+//  update
+router.put("/:id", updateThought);
+
+//  delete
+router.delete("/:thoughId", deleteThought);
+
+// add reaction
+router.post("/add-reaction/:thoughtId", addReaction);
+
+//  delete reaction
+router.delete("/:userId/friends/:friendId", deleteReaction);
 
 module.exports = router;

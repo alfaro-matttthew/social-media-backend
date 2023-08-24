@@ -14,14 +14,4 @@ const userSchema = new mongoose.Schema({
 
 const User = mongoose.model('User', userSchema);
 
-// const handleError = (err) => console.error(err);
-
-// User
-//   .create({
-//     username: 'testUser001',
-//     email: 'test001@test.com',
-//   })
-//   .then(result => console.log('Created new user', result))
-//   .catch(err => handleError(err));
-
 module.exports = User;

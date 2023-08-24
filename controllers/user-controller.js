@@ -6,6 +6,7 @@ const getAllUsers = async (req, res) => {
     const result = await User.find({}).populate("friends");
     res.status(200).json(result);
   } catch (err) {
+    console.log("\x1b[35m", "!!! ERROR: user-controller.getAllUsers !!!");
     console.log(err);
     res.status(500).send({ message: "Internal Server Error" });
   }
